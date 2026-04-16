@@ -1,0 +1,136 @@
+{
+  "pages": [
+    {
+      "path": "pages/public/login",
+      "style": {
+        "navigationBarTitleText": "欢迎加入跑团",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/index/announcement",
+      "style": {
+        "navigationBarTitleText": "跑团公告"
+      }
+    },
+    {
+      "path": "pages/points/index",
+      "style": {
+        "navigationBarTitleText": "积分排行"
+      }
+    },
+    {
+      "path": "pages/points/detail",
+      "style": {
+        "navigationBarTitleText": "积分明细"
+      }
+    },
+    {
+      "path": "pages/points/submit",
+      "style": {
+        "navigationBarTitleText": "提交积分"
+      }
+    },
+    {
+      "path": "pages/points/approve",
+      "style": {
+        "navigationBarTitleText": "积分审批",
+        "permission": {
+          "scope": "admin"
+        }
+      }
+    },
+    {
+      "path": "pages/running/index",
+      "style": {
+        "navigationBarTitleText": "跑步数据"
+      }
+    },
+    {
+      "path": "pages/running/history",
+      "style": {
+        "navigationBarTitleText": "跑步记录"
+      }
+    },
+    {
+      "path": "pages/running/detail",
+      "style": {
+        "navigationBarTitleText": "跑步详情"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/profile/bind",
+      "style": {
+        "navigationBarTitleText": "账号绑定"
+      }
+    },
+    {
+      "path": "pages/profile/members",
+      "style": {
+        "navigationBarTitleText": "成员管理"
+      }
+    },
+    {
+      "path": "pages/profile/settings",
+      "style": {
+        "navigationBarTitleText": "设置"
+      }
+    },
+    {
+      "path": "pages/admin/adminManage",
+      "style": {
+        "navigationBarTitleText": "管理员管理"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "九州战马联盟",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/points/index",
+        "iconPath": "static/tabbar/points.png",
+        "selectedIconPath": "static/tabbar/points-active.png",
+        "text": "积分"
+      },
+      {
+        "pagePath": "pages/running/index",
+        "iconPath": "static/tabbar/running.png",
+        "selectedIconPath": "static/tabbar/running-active.png",
+        "text": "跑步"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "iconPath": "static/tabbar/profile.png",
+        "selectedIconPath": "static/tabbar/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

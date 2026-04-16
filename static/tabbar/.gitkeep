@@ -1,0 +1,26 @@
+# TabBar 图标目录
+
+本目录存放 TabBar 图标，请添加以下图标文件：
+
+## 需要添加的图标文件
+
+| 文件名 | 尺寸 | 说明 |
+|--------|------|------|
+| home.png | 81x81 | 首页-未选中 |
+| home-active.png | 81x81 | 首页-选中 |
+| points.png | 81x81 | 积分-未选中 |
+| points-active.png | 81x81 | 积分-选中 |
+| running.png | 81x81 | 跑步-未选中 |
+| running-active.png | 81x81 | 跑步-选中 |
+| profile.png | 81x81 | 我的-未选中 |
+| profile-active.png | 81x81 | 我的-选中 |
+
+## 图标要求
+
+- 格式：PNG（建议带透明背景）
+- 尺寸：81x81 像素（2倍图，40x81实际显示）
+- 颜色：单色或浅色系，与tabBar配置一致
+
+## 临时解决方案
+
+如果暂时没有图标，可以先使用 emoji 或 uni-icons 组件作为占位。

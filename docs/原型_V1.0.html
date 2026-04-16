@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九州战马联盟 V1.0 原型</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #1a1a2e;
+      color: #333;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+    .prototype-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      background: #fff;
+      border-radius: 44px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 30px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      z-index: 100;
+    }
+    .screen {
+      height: 100%;
+      overflow-y: auto;
+      padding-top: 50px;
+    }
+    .screen::-webkit-scrollbar { display: none; }
+
+    /* ===== 登录注册页 ===== */
+    .login-screen {
+      background: linear-gradient(180deg, #007AFF 0%, #f5f5f5 60%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 30px 30px;
+    }
+    .login-logo {
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .login-title {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .login-subtitle {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+    .avatar-preview {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #ccc;
+      overflow: hidden;
+    }
+    .avatar-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .form-card {
+      width: 100%;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .form-item {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .form-input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 0 16px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #007AFF;
+    }
+    .group-select {
+      display: flex;
+      gap: 12px;
+    }
+    .group-option {
+      flex: 1;
+      height: 60px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .group-option.active {
+      border-color: #007AFF;
+      background: #e8f4ff;
+      color: #007AFF;
+      font-weight: 600;
+    }
+    .group-option.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .btn-primary {
+      width: 100%;
+      height: 50px;
+      background: #007AFF;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-wechat {
+      width: 100%;
+      height: 50px;
+      background: #07C160;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .btn-wechat .icon { font-size: 20px; }
+
+    /* ===== 我的页面 ===== */
+    .profile-screen {
+      background: #f5f5f5;
+    }
+    .profile-header {
+      background: linear-gradient(135deg, #007AFF, #5856D6);
+      padding: 30px 20px 60px;
+      color: #fff;
+    }
+    .profile-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .profile-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 3px;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .profile-name {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .profile-group {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    .profile-content {
+      margin-top: -40px;
+      padding: 0 16px;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-right: 14px;
+    }
+    .menu-icon.blue { background: #e8f4ff; color: #007AFF; }
+    .menu-icon.green { background: #e8f5e9; color: #07C160; }
+    .menu-icon.orange { background: #fff3e0; color: #FF9800; }
+    .menu-icon.red { background: #ffebee; color: #F44336; }
+    .menu-icon.purple { background: #f3e5f5; color: #9C27B0; }
+    .menu-text {
+      flex: 1;
+      font-size: 16px;
+      color: #333;
+    }
+    .menu-arrow {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .menu-badge {
+      background: #F44336;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+
+    /* ===== 成员管理页 ===== */
+    .members-screen {
+      background: #f5f5f5;
+    }
+    .members-header {
+      background: #fff;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .search-bar {
+      display: flex;
+      gap: 12px;
+    }
+    .search-input-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      height: 40px;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 20px;
+      padding: 0 16px 0 40px;
+      font-size: 14px;
+    }
+    .search-input::placeholder { color: #999; }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+    .filter-btn {
+      height: 40px;
+      padding: 0 16px;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .members-list {
+      padding: 16px;
+    }
+    .member-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .member-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      margin-right: 14px;
+      overflow: hidden;
+    }
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .member-info { flex: 1; }
+    .member-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .member-phone {
+      font-size: 13px;
+      color: #666;
+    }
+    .member-tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-left: 10px;
+    }
+    .tag-admin { background: #fff3e0; color: #FF9800; }
+    .tag-super { background: #f3e5f5; color: #9C27B0; }
+    .tag-group1 { background: #e8f4ff; color: #007AFF; }
+    .tag-group2 { background: #e8f5e9; color: #07C160; }
+    .tag-branch { background: #fff3e0; color: #FF9800; }
+
+    /* ===== 管理员管理页 ===== */
+    .admin-screen {
+      background: #f5f5f5;
+    }
+    .admin-tabs {
+      display: flex;
+      background: #fff;
+      padding: 0 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .admin-tab {
+      flex: 1;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #666;
+      border-bottom: 3px solid transparent;
+    }
+    .admin-tab.active {
+      color: #007AFF;
+      border-bottom-color: #007AFF;
+    }
+    .admin-list {
+      padding: 16px;
+    }
+    .admin-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .admin-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      margin-right: 14px;
+      overflow: hidden;
+    }
+    .admin-info { flex: 1; }
+    .admin-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .admin-time {
+      font-size: 12px;
+      color: #999;
+    }
+    .btn-revoke {
+      padding: 6px 14px;
+      background: #ffebee;
+      color: #F44336;
+      border: none;
+      border-radius: 15px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-revoke:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* 群组设置 */
+    .settings-section {
+      padding: 16px;
+    }
+    .settings-title {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+    .settings-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .settings-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .settings-item:last-child { border-bottom: none; }
+    .toggle-switch {
+      width: 52px;
+      height: 32px;
+      background: #ccc;
+      border-radius: 16px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle-switch.active { background: #07C160; }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+
+    /* ===== 设置页 ===== */
+    .settings-profile {
+      background: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .settings-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      overflow: hidden;
+    }
+    .settings-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .settings-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .settings-phone {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* ===== 页面标题 ===== */
+    .page-title {
+      padding: 16px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      background: #fff;
+    }
+
+    /* 底部安全区 */
+    .safe-bottom {
+      height: 34px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>九州战马联盟 V1.0 原型</h1>
+
+<div class="prototype-container">
+
+  <!-- 1. 登录注册页 -->
+  <div class="phone-frame">
+    <div class="screen login-screen">
+      <div class="login-logo"><img src="../../static/logo.jpg" alt="logo" style="width:60px;height:60px;border-radius:15px;object-fit:cover;"></div>
+      <div class="login-title">九州战马联盟</div>
+      <div class="login-subtitle">健康生活，快乐跑步</div>
+
+      <div class="avatar-preview">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="头像">
+      </div>
+
+      <div class="form-card">
+        <div class="form-item">
+          <label class="form-label">手机号</label>
+          <input class="form-input" type="tel" placeholder="请输入手机号" value="138****8888">
+        </div>
+        <div class="form-item">
+          <label class="form-label">姓名</label>
+          <input class="form-input" type="text" placeholder="请输入姓名" value="张三">
+        </div>
+        <div class="form-item">
+          <label class="form-label">所属群组</label>
+          <div class="group-select">
+            <div class="group-option active">一群</div>
+            <div class="group-option">二群</div>
+            <div class="group-option disabled">分舵群</div>
+          </div>
+        </div>
+        <button class="btn-primary">完成注册</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 我的页面 -->
+  <div class="phone-frame">
+    <div class="screen profile-screen">
+      <div class="profile-header">
+        <div class="profile-info">
+          <div class="profile-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="头像">
+          </div>
+          <div>
+            <div class="profile-name">张三</div>
+            <div class="profile-group">一群 · 管理员</div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-content">
+        <div class="menu-card">
+          <div class="menu-item">
+            <div class="menu-icon blue">👥</div>
+            <div class="menu-text">成员管理</div>
+            <div class="menu-arrow">›</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon orange">⚙️</div>
+            <div class="menu-text">管理员管理</div>
+            <div class="menu-badge">超管</div>
+            <div class="menu-arrow">›</div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-item">
+            <div class="menu-icon green">🏃</div>
+            <div class="menu-text">跑步数据</div>
+            <div class="menu-arrow">›</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon purple">⭐</div>
+            <div class="menu-text">积分排行</div>
+            <div class="menu-arrow">›</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon blue">📢</div>
+            <div class="menu-text">跑团公告</div>
+            <div class="menu-arrow">›</div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-item">
+            <div class="menu-icon green">🔧</div>
+            <div class="menu-text">设置</div>
+            <div class="menu-arrow">›</div>
+          </div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 3. 成员管理页 -->
+  <div class="phone-frame">
+    <div class="screen members-screen">
+      <div class="page-title">成员管理</div>
+      <div class="members-header">
+        <div class="search-bar">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input class="search-input" type="text" placeholder="搜索姓名或手机号">
+          </div>
+          <button class="filter-btn">一群 ▾</button>
+        </div>
+      </div>
+      <div class="members-list">
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="">
+          </div>
+          <div class="member-info">
+            <div class="member-name">李四</div>
+            <div class="member-phone">138****1234</div>
+          </div>
+          <span class="member-tag tag-super">超管</span>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" alt="">
+          </div>
+          <div class="member-info">
+            <div class="member-name">王五</div>
+            <div class="member-phone">139****5678</div>
+          </div>
+          <span class="member-tag tag-admin">管理员</span>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie" alt="">
+          </div>
+          <div class="member-info">
+            <div class="member-name">赵六</div>
+            <div class="member-phone">137****9012</div>
+          </div>
+          <span class="member-tag tag-group1">一群</span>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Daisy" alt="">
+          </div>
+          <div class="member-info">
+            <div class="member-name">钱七</div>
+            <div class="member-phone">136****3456</div>
+          </div>
+          <span class="member-tag tag-group2">二群</span>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Eva" alt="">
+          </div>
+          <div class="member-info">
+            <div class="member-name">孙八</div>
+            <div class="member-phone">135****7890</div>
+          </div>
+          <span class="member-tag tag-branch">分舵群</span>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 4. 管理员管理页 -->
+  <div class="phone-frame">
+    <div class="screen admin-screen">
+      <div class="page-title">管理员管理</div>
+      <div class="admin-tabs">
+        <div class="admin-tab active">管理员列表</div>
+        <div class="admin-tab">群组设置</div>
+      </div>
+
+      <!-- 管理员列表 -->
+      <div class="admin-list">
+        <div class="admin-card">
+          <div class="admin-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="">
+          </div>
+          <div class="admin-info">
+            <div class="admin-name">李四</div>
+            <div class="admin-time">2024-01-15 成为管理员</div>
+          </div>
+          <button class="btn-revoke" disabled>撤销</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" alt="">
+          </div>
+          <div class="admin-info">
+            <div class="admin-name">王五</div>
+            <div class="admin-time">2024-03-20 成为管理员</div>
+          </div>
+          <button class="btn-revoke">撤销</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Frank" alt="">
+          </div>
+          <div class="admin-info">
+            <div class="admin-name">周九</div>
+            <div class="admin-time">2024-06-01 成为管理员</div>
+          </div>
+          <button class="btn-revoke">撤销</button>
+        </div>
+      </div>
+
+      <!-- 群组设置 -->
+      <div class="settings-section">
+        <div class="settings-title">群组开关</div>
+        <div class="settings-card">
+          <div class="settings-item">
+            <span>一群</span>
+            <div class="toggle-switch active"></div>
+          </div>
+          <div class="settings-item">
+            <span>二群</span>
+            <div class="toggle-switch active"></div>
+          </div>
+          <div class="settings-item">
+            <span>分舵群</span>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 5. 设置页 -->
+  <div class="phone-frame">
+    <div class="screen profile-screen">
+      <div class="page-title">设置</div>
+      <div class="settings-profile">
+        <div class="settings-avatar">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="">
+        </div>
+        <div>
+          <div class="settings-name">张三</div>
+          <div class="settings-phone">138****8888</div>
+        </div>
+      </div>
+      <div style="height: 16px;"></div>
+      <div class="menu-card">
+        <div class="menu-item">
+          <div class="menu-icon blue">📱</div>
+          <div class="menu-text">修改手机号</div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon blue">👤</div>
+          <div class="menu-text">修改姓名</div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon blue">💬</div>
+          <div class="menu-text">修改微信号</div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon green">🏷️</div>
+          <div class="menu-text">切换群组</div>
+          <div class="menu-arrow">›</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-item">
+          <div class="menu-icon purple">🔐</div>
+          <div class="menu-text">修改超管密码</div>
+          <div class="menu-arrow">›</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-item">
+          <div class="menu-icon red">🚪</div>
+          <div class="menu-text" style="color: #F44336;">退出登录</div>
+          <div class="menu-arrow">›</div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 简单的交互演示
+  document.querySelectorAll('.group-option:not(.disabled)').forEach(option => {
+    option.addEventListener('click', function() {
+      document.querySelectorAll('.group-option').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.toggle-switch').forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

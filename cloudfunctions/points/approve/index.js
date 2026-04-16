@@ -116,6 +116,16 @@ exports.main = async (event, context) => {
 
     // 如果是批准，增加用户积分
     if (action === 'approve') {
+      // 设置过期时间：入账后1年
+      const expireTime = new Date()
+      expireTime.setFullYear(expireTime.getFullYear() + 1)
+
+      await pointRecordsCollection.doc(recordId).update({
+        data: {
+          expireTime: expireTime
+        }
+      })
+
       await membersCollection
         .where({
           groupId: recordData.groupId,

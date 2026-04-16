@@ -218,11 +218,15 @@ export async function syncHuawei() {
 
 /**
  * 获取成员列表（管理员）
- * @param {string} groupId - 跑团ID
+ * @param {object} params - 查询参数
+ * @param {array} params.groupIds - 群组ID列表（支持多选）
+ * @param {string} params.province - 省份筛选
+ * @param {string} params.city - 城市筛选
  * @returns {Promise<array>}
  */
-export async function getMembers(groupId) {
-  return callFunction(CLOUD_FUNCTIONS.ADMIN_GET_MEMBERS, { groupId })
+export async function getMembers(params = {}) {
+  const { groupIds, province, city } = params
+  return callFunction(CLOUD_FUNCTIONS.ADMIN_GET_MEMBERS, { groupIds, province, city })
 }
 
 /**

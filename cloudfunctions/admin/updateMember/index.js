@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
 
-  const { memberId, role, status, groupId } = event
+  const { memberId, role, status, groupIds, province, city } = event
 
   if (!memberId) {
     return {
@@ -86,8 +86,16 @@ exports.main = async (event, context) => {
       updateData.status = status
     }
 
-    if (groupId !== undefined) {
-      updateData.groupId = groupId
+    if (groupIds !== undefined) {
+      updateData.groupIds = groupIds
+    }
+
+    if (province !== undefined) {
+      updateData.province = province
+    }
+
+    if (city !== undefined) {
+      updateData.city = city
     }
 
     // 执行更新

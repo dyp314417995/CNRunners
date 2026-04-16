@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
 
-  const { groupId } = event
+  const { groupIds, province, city, keyword } = event
 
   try {
     // 检查当前用户是否为管理员（admin或super_admin）
@@ -34,9 +34,19 @@ exports.main = async (event, context) => {
       status: 'active'
     }
 
-    // 如果指定了群组筛选
-    if (groupId) {
-      query.groupId = groupId
+    // 如果指定了群组筛选（支持多选）
+    if (groupIds && groupIds.length > 0) {
+      query.groupIds = db.command.in(groupIds)
+    }
+
+    // 如果指定了省份筛选
+    if (province) {
+      query.province = province
+    }
+
+    // 如果指定了城市筛选
+    if (city) {
+      query.city = city
     }
 
     // 获取所有成员
@@ -49,7 +59,9 @@ exports.main = async (event, context) => {
         name: true,
         phone: true,
         wechatId: true,
-        groupId: true,
+        groupIds: true,
+        province: true,
+        city: true,
         role: true,
         createTime: true,
         updateTime: true
@@ -65,7 +77,9 @@ exports.main = async (event, context) => {
       name: user.name,
       phone: user.phone,
       wechatId: user.wechatId,
-      groupId: user.groupId,
+      groupIds: user.groupIds || [],
+      province: user.province || '',
+      city: user.city || '',
       role: user.role,
       createAt: formatTime(user.createTime)
     }))

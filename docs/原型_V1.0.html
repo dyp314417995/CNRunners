@@ -23,7 +23,7 @@
       flex-wrap: wrap;
       gap: 40px;
       justify-content: center;
-      max-width: 1400px;
+      max-width: 1800px;
       margin: 0 auto;
     }
     .phone-frame {
@@ -138,12 +138,13 @@
     .group-select {
       display: flex;
       gap: 12px;
+      flex-wrap: wrap;
     }
     .group-option {
-      flex: 1;
-      height: 60px;
+      height: 44px;
+      padding: 0 16px;
       border: 2px solid #e0e0e0;
-      border-radius: 12px;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -161,6 +162,36 @@
     .group-option.disabled {
       opacity: 0.4;
       cursor: not-allowed;
+    }
+    .group-option.exclusive {
+      border-color: #FF9800;
+      background: #fff3e0;
+      color: #FF9800;
+    }
+
+    /* 城市选择器 */
+    .city-picker {
+      display: flex;
+      gap: 10px;
+    }
+    .city-select {
+      flex: 1;
+      height: 44px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 0 12px;
+      font-size: 14px;
+      background: #fff;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 30px;
+    }
+    .city-select:focus {
+      outline: none;
+      border-color: #007AFF;
     }
     .btn-primary {
       width: 100%;
@@ -271,6 +302,14 @@
     }
     .menu-badge {
       background: #F44336;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+    .menu-badge-orange {
+      background: #FF9800;
       color: #fff;
       font-size: 12px;
       padding: 2px 8px;
@@ -390,6 +429,7 @@
       font-size: 15px;
       color: #666;
       border-bottom: 3px solid transparent;
+      cursor: pointer;
     }
     .admin-tab.active {
       color: #007AFF;
@@ -530,6 +570,444 @@
     .safe-bottom {
       height: 34px;
     }
+
+    /* ===== 积分相关样式 ===== */
+
+    /* 积分排行页 */
+    .points-screen {
+      background: #f5f5f5;
+    }
+    .points-header {
+      background: linear-gradient(135deg, #007AFF, #5856D6);
+      padding: 20px;
+      color: #fff;
+    }
+    .points-total {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .points-total-num {
+      font-size: 48px;
+      font-weight: 700;
+    }
+    .points-total-label {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    .points-tabs {
+      display: flex;
+      background: #fff;
+      padding: 0 20px;
+    }
+    .points-tab {
+      flex: 1;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+    .points-tab.active {
+      color: #007AFF;
+      border-bottom-color: #007AFF;
+    }
+    .points-list {
+      padding: 16px;
+    }
+    .rank-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .rank-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+    .rank-num.gold { background: #FFF3E0; color: #FF9800; }
+    .rank-num.silver { background: #F5F5F5; color: #999; }
+    .rank-num.bronze { background: #FFF8E1; color: #795548; }
+    .rank-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-right: 12px;
+      overflow: hidden;
+    }
+    .rank-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .rank-info { flex: 1; }
+    .rank-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .rank-group {
+      font-size: 12px;
+      color: #999;
+    }
+    .rank-points {
+      font-size: 18px;
+      font-weight: 600;
+      color: #007AFF;
+    }
+
+    /* 积分提交页 */
+    .submit-screen {
+      background: #f5f5f5;
+    }
+    .submit-header {
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    .submit-my-points {
+      font-size: 14px;
+      color: #666;
+    }
+    .submit-my-points span {
+      font-size: 28px;
+      font-weight: 700;
+      color: #007AFF;
+    }
+    .submit-content {
+      padding: 16px;
+    }
+    .submit-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .submit-section-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .category-item {
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 16px 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .category-item.active {
+      border-color: #007AFF;
+      background: #e8f4ff;
+    }
+    .category-icon {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .category-name {
+      font-size: 13px;
+      color: #333;
+    }
+    .category-item.active .category-name {
+      color: #007AFF;
+      font-weight: 600;
+    }
+    .upload-area {
+      border: 2px dashed #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .upload-area:hover {
+      border-color: #007AFF;
+    }
+    .upload-icon {
+      font-size: 32px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .upload-text {
+      font-size: 14px;
+      color: #999;
+    }
+    .upload-images {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .upload-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .upload-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .upload-image .delete-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .textarea-item {
+      width: 100%;
+      min-height: 80px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 14px;
+      resize: none;
+      font-family: inherit;
+    }
+    .textarea-item:focus {
+      outline: none;
+      border-color: #007AFF;
+    }
+
+    /* 积分审批页 */
+    .approve-screen {
+      background: #f5f5f5;
+    }
+    .approve-tabs {
+      display: flex;
+      background: #fff;
+      padding: 0 20px;
+    }
+    .approve-tab {
+      flex: 1;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #666;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+    }
+    .approve-tab.active {
+      color: #007AFF;
+      border-bottom-color: #007AFF;
+    }
+    .approve-tab .badge {
+      background: #F44336;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+    .approve-list {
+      padding: 16px;
+    }
+    .approve-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .approve-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .approve-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-right: 12px;
+      overflow: hidden;
+    }
+    .approve-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .approve-user { flex: 1; }
+    .approve-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .approve-time {
+      font-size: 12px;
+      color: #999;
+    }
+    .approve-type {
+      font-size: 13px;
+      padding: 4px 10px;
+      background: #e8f4ff;
+      color: #007AFF;
+      border-radius: 12px;
+    }
+    .approve-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    .approve-images {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .approve-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .approve-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .approve-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-approve {
+      flex: 1;
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-pass {
+      background: #07C160;
+      color: #fff;
+    }
+    .btn-reject {
+      background: #f5f5f5;
+      color: #666;
+    }
+
+    /* 积分详情页 */
+    .detail-screen {
+      background: #f5f5f5;
+    }
+    .detail-header {
+      background: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .detail-points {
+      font-size: 42px;
+      font-weight: 700;
+      color: #007AFF;
+    }
+    .detail-label {
+      font-size: 14px;
+      color: #999;
+      margin-top: 4px;
+    }
+    .detail-list {
+      padding: 16px;
+    }
+    .detail-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 10px;
+    }
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .detail-item:last-child { border-bottom: none; }
+    .detail-item-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .detail-item-type {
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 2px;
+    }
+    .detail-item-date {
+      font-size: 12px;
+      color: #999;
+    }
+    .detail-item-points {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .detail-item-points.add { color: #07C160; }
+    .detail-item-points.sub { color: #F44336; }
+    .detail-status {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+    .detail-status.pending { background: #FFF3E0; color: #FF9800; }
+    .detail-status.approved { background: #E8F5E9; color: #07C160; }
+    .detail-status.rejected { background: #FFEBEE; color: #F44336; }
+
+    /* TabBar */
+    .tabbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 84px;
+      background: #fff;
+      display: flex;
+      padding: 8px 0 34px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+    .tabbar-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      color: #999;
+    }
+    .tabbar-icon {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .tabbar-item.active {
+      color: #007AFF;
+    }
   </style>
 </head>
 <body>
@@ -541,7 +1019,7 @@
   <!-- 1. 登录注册页 -->
   <div class="phone-frame">
     <div class="screen login-screen">
-      <div class="login-logo"><img src="../../static/logo.jpg" alt="logo" style="width:60px;height:60px;border-radius:15px;object-fit:cover;"></div>
+      <div class="login-logo"><img src="../static/logo.jpg" alt="logo" style="width:60px;height:60px;border-radius:15px;object-fit:cover;"></div>
       <div class="login-title">九州战马联盟</div>
       <div class="login-subtitle">健康生活，快乐跑步</div>
 
@@ -559,11 +1037,31 @@
           <input class="form-input" type="text" placeholder="请输入姓名" value="张三">
         </div>
         <div class="form-item">
+          <label class="form-label">所在城市</label>
+          <div class="city-picker">
+            <select class="city-select" id="province-select">
+              <option value="">选择省份</option>
+              <option value="bj" selected>北京市</option>
+              <option value="sh">上海市</option>
+              <option value="gd">广东省</option>
+              <option value="zj">浙江省</option>
+              <option value="sc">四川省</option>
+            </select>
+            <select class="city-select" id="city-select">
+              <option value="">选择城市</option>
+              <option value="cy" selected>朝阳区</option>
+              <option value="hd">海淀区</option>
+              <option value="fx">丰台区</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-item">
           <label class="form-label">所属群组</label>
-          <div class="group-select">
-            <div class="group-option active">一群</div>
-            <div class="group-option">二群</div>
-            <div class="group-option disabled">分舵群</div>
+          <div class="group-select" id="group-select">
+            <div class="group-option active" data-group="group_1">一群</div>
+            <div class="group-option" data-group="group_2">二群</div>
+            <div class="group-option disabled" data-group="group_3">分舵群</div>
+            <div class="group-option" data-group="none">未加入</div>
           </div>
         </div>
         <button class="btn-primary">完成注册</button>
@@ -596,6 +1094,12 @@
             <div class="menu-icon orange">⚙️</div>
             <div class="menu-text">管理员管理</div>
             <div class="menu-badge">超管</div>
+            <div class="menu-arrow">›</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon orange">📋</div>
+            <div class="menu-text">积分审批</div>
+            <div class="menu-badge-orange">3</div>
             <div class="menu-arrow">›</div>
           </div>
         </div>
@@ -638,7 +1142,10 @@
             <span class="search-icon">🔍</span>
             <input class="search-input" type="text" placeholder="搜索姓名或手机号">
           </div>
-          <button class="filter-btn">一群 ▾</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button class="filter-btn" id="filter-group">一群 ▾</button>
+          <button class="filter-btn" id="filter-location">北京市/朝阳区 ▾</button>
         </div>
       </div>
       <div class="members-list">
@@ -649,6 +1156,7 @@
           <div class="member-info">
             <div class="member-name">李四</div>
             <div class="member-phone">138****1234</div>
+            <div style="font-size:12px;color:#999;margin-top:2px;">北京市/朝阳区</div>
           </div>
           <span class="member-tag tag-super">超管</span>
         </div>
@@ -659,6 +1167,7 @@
           <div class="member-info">
             <div class="member-name">王五</div>
             <div class="member-phone">139****5678</div>
+            <div style="font-size:12px;color:#999;margin-top:2px;">上海市/浦东新区</div>
           </div>
           <span class="member-tag tag-admin">管理员</span>
         </div>
@@ -669,6 +1178,7 @@
           <div class="member-info">
             <div class="member-name">赵六</div>
             <div class="member-phone">137****9012</div>
+            <div style="font-size:12px;color:#999;margin-top:2px;">广东省/深圳市</div>
           </div>
           <span class="member-tag tag-group1">一群</span>
         </div>
@@ -679,6 +1189,7 @@
           <div class="member-info">
             <div class="member-name">钱七</div>
             <div class="member-phone">136****3456</div>
+            <div style="font-size:12px;color:#999;margin-top:2px;">浙江省/杭州市</div>
           </div>
           <span class="member-tag tag-group2">二群</span>
         </div>
@@ -689,6 +1200,7 @@
           <div class="member-info">
             <div class="member-name">孙八</div>
             <div class="member-phone">135****7890</div>
+            <div style="font-size:12px;color:#999;margin-top:2px;">四川省/成都市</div>
           </div>
           <span class="member-tag tag-branch">分舵群</span>
         </div>
@@ -704,10 +1216,11 @@
       <div class="admin-tabs">
         <div class="admin-tab active">管理员列表</div>
         <div class="admin-tab">群组设置</div>
+        <div class="admin-tab">积分分类</div>
       </div>
 
       <!-- 管理员列表 -->
-      <div class="admin-list">
+      <div class="admin-list" id="admin-list">
         <div class="admin-card">
           <div class="admin-avatar">
             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="">
@@ -741,7 +1254,7 @@
       </div>
 
       <!-- 群组设置 -->
-      <div class="settings-section">
+      <div class="settings-section" id="group-settings" style="display:none;">
         <div class="settings-title">群组开关</div>
         <div class="settings-card">
           <div class="settings-item">
@@ -755,6 +1268,42 @@
           <div class="settings-item">
             <span>分舵群</span>
             <div class="toggle-switch"></div>
+          </div>
+          <div class="settings-item">
+            <span>未加入</span>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 积分分类设置 -->
+      <div class="settings-section" id="category-settings" style="display:none;">
+        <div class="settings-title">积分分类管理</div>
+        <div class="settings-card">
+          <div class="settings-item">
+            <span>拉新</span>
+            <span style="color:#999;font-size:13px;">50积分</span>
+            <div class="toggle-switch active" style="margin-left:8px;"></div>
+          </div>
+          <div class="settings-item">
+            <span>团服参赛</span>
+            <span style="color:#999;font-size:13px;">30积分</span>
+            <div class="toggle-switch active" style="margin-left:8px;"></div>
+          </div>
+          <div class="settings-item">
+            <span>自媒体</span>
+            <span style="color:#999;font-size:13px;">20积分</span>
+            <div class="toggle-switch active" style="margin-left:8px;"></div>
+          </div>
+          <div class="settings-item">
+            <span>战队打卡</span>
+            <span style="color:#999;font-size:13px;">10积分</span>
+            <div class="toggle-switch active" style="margin-left:8px;"></div>
+          </div>
+          <div class="settings-item">
+            <span>参加集体活动</span>
+            <span style="color:#999;font-size:13px;">30积分</span>
+            <div class="toggle-switch active" style="margin-left:8px;"></div>
           </div>
         </div>
       </div>
@@ -817,26 +1366,397 @@
     </div>
   </div>
 
+  <!-- 6. 积分排行页 -->
+  <div class="phone-frame">
+    <div class="screen points-screen">
+      <div class="points-header">
+        <div class="points-total">
+          <div class="points-total-num">1,280</div>
+          <div class="points-total-label">我的总积分</div>
+        </div>
+      </div>
+      <div class="points-tabs">
+        <div class="points-tab active">总排行</div>
+        <div class="points-tab">今年积分</div>
+      </div>
+      <div class="points-list">
+        <div class="rank-card">
+          <div class="rank-num gold">1</div>
+          <div class="rank-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="">
+          </div>
+          <div class="rank-info">
+            <div class="rank-name">李四</div>
+            <div class="rank-group">一群</div>
+          </div>
+          <div class="rank-points">2,580</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-num silver">2</div>
+          <div class="rank-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" alt="">
+          </div>
+          <div class="rank-info">
+            <div class="rank-name">王五</div>
+            <div class="rank-group">一群</div>
+          </div>
+          <div class="rank-points">2,320</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-num bronze">3</div>
+          <div class="rank-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie" alt="">
+          </div>
+          <div class="rank-info">
+            <div class="rank-name">赵六</div>
+            <div class="rank-group">二群</div>
+          </div>
+          <div class="rank-points">1,890</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-num" style="background:#f5f5f5;color:#999;">4</div>
+          <div class="rank-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="">
+          </div>
+          <div class="rank-info">
+            <div class="rank-name">张三</div>
+            <div class="rank-group">一群</div>
+          </div>
+          <div class="rank-points">1,280</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-num" style="background:#f5f5f5;color:#999;">5</div>
+          <div class="rank-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Daisy" alt="">
+          </div>
+          <div class="rank-info">
+            <div class="rank-name">钱七</div>
+            <div class="rank-group">分舵群</div>
+          </div>
+          <div class="rank-points">980</div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 7. 积分提交页 -->
+  <div class="phone-frame">
+    <div class="screen submit-screen">
+      <div class="submit-header">
+        <div class="submit-my-points">
+          当前可用积分：<span>1,280</span>
+        </div>
+      </div>
+      <div class="submit-content">
+        <div class="submit-section">
+          <div class="submit-section-title">选择积分类型</div>
+          <div class="category-grid">
+            <div class="category-item active">
+              <div class="category-icon">👥</div>
+              <div class="category-name">拉新</div>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">👕</div>
+              <div class="category-name">团服参赛</div>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">📱</div>
+              <div class="category-name">自媒体</div>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">✅</div>
+              <div class="category-name">战队打卡</div>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">🎉</div>
+              <div class="category-name">集体活动</div>
+            </div>
+          </div>
+        </div>
+        <div class="submit-section">
+          <div class="submit-section-title">上传凭证图片（必填）</div>
+          <div class="upload-area">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">点击上传图片</div>
+          </div>
+        </div>
+        <div class="submit-section">
+          <div class="submit-section-title">补充说明（选填）</div>
+          <textarea class="textarea-item" placeholder="请输入积分说明，如：推荐新成员王小明加入跑团"></textarea>
+        </div>
+        <button class="btn-primary">提交积分申请</button>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 8. 积分审批页 -->
+  <div class="phone-frame">
+    <div class="screen approve-screen">
+      <div class="page-title">积分审批</div>
+      <div class="approve-tabs">
+        <div class="approve-tab active">待审批<span class="badge">3</span></div>
+        <div class="approve-tab">已通过</div>
+        <div class="approve-tab">已拒绝</div>
+      </div>
+      <div class="approve-list">
+        <div class="approve-card">
+          <div class="approve-header">
+            <div class="approve-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie" alt="">
+            </div>
+            <div class="approve-user">
+              <div class="approve-name">赵六</div>
+              <div class="approve-time">2024-04-15 14:30</div>
+            </div>
+            <div class="approve-type">拉新</div>
+          </div>
+          <div class="approve-desc">推荐新成员王小明加入一群</div>
+          <div class="approve-images">
+            <div class="approve-image">
+              <img src="https://picsum.photos/200/200?random=1" alt="">
+            </div>
+          </div>
+          <div class="approve-actions">
+            <button class="btn-approve btn-reject">拒绝</button>
+            <button class="btn-approve btn-pass">通过</button>
+          </div>
+        </div>
+        <div class="approve-card">
+          <div class="approve-header">
+            <div class="approve-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Daisy" alt="">
+            </div>
+            <div class="approve-user">
+              <div class="approve-name">钱七</div>
+              <div class="approve-time">2024-04-15 10:20</div>
+            </div>
+            <div class="approve-type">团服参赛</div>
+          </div>
+          <div class="approve-desc">参加北京马拉松，穿着团服参赛</div>
+          <div class="approve-images">
+            <div class="approve-image">
+              <img src="https://picsum.photos/200/200?random=2" alt="">
+            </div>
+            <div class="approve-image">
+              <img src="https://picsum.photos/200/200?random=3" alt="">
+            </div>
+          </div>
+          <div class="approve-actions">
+            <button class="btn-approve btn-reject">拒绝</button>
+            <button class="btn-approve btn-pass">通过</button>
+          </div>
+        </div>
+        <div class="approve-card">
+          <div class="approve-header">
+            <div class="approve-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Eva" alt="">
+            </div>
+            <div class="approve-user">
+              <div class="approve-name">孙八</div>
+              <div class="approve-time">2024-04-14 18:45</div>
+            </div>
+            <div class="approve-type">自媒体</div>
+          </div>
+          <div class="approve-desc">在小红书发布跑团相关内容</div>
+          <div class="approve-images">
+            <div class="approve-image">
+              <img src="https://picsum.photos/200/200?random=4" alt="">
+            </div>
+          </div>
+          <div class="approve-actions">
+            <button class="btn-approve btn-reject">拒绝</button>
+            <button class="btn-approve btn-pass">通过</button>
+          </div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- 9. 积分详情页 -->
+  <div class="phone-frame">
+    <div class="screen detail-screen">
+      <div class="detail-header">
+        <div class="detail-points">1,280</div>
+        <div class="detail-label">可用积分（入账后1年内有效）</div>
+      </div>
+      <div class="detail-list">
+        <div class="detail-card">
+          <div class="detail-item">
+            <div class="detail-item-left">
+              <div class="detail-item-type">拉新 - 推荐新成员</div>
+              <div class="detail-item-date">2024-04-10</div>
+            </div>
+            <div>
+              <div class="detail-item-points add">+50</div>
+              <div class="detail-status approved">已通过</div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-item">
+            <div class="detail-item-left">
+              <div class="detail-item-type">团服参赛 - 北京马拉松</div>
+              <div class="detail-item-date">2024-03-28</div>
+            </div>
+            <div>
+              <div class="detail-item-points add">+30</div>
+              <div class="detail-status approved">已通过</div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-item">
+            <div class="detail-item-left">
+              <div class="detail-item-type">战队打卡 - 本周完成</div>
+              <div class="detail-item-date">2024-03-20</div>
+            </div>
+            <div>
+              <div class="detail-item-points add">+10</div>
+              <div class="detail-status approved">已通过</div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-item">
+            <div class="detail-item-left">
+              <div class="detail-item-type">积分兑换 - 跑团周边</div>
+              <div class="detail-item-date">2024-02-15</div>
+            </div>
+            <div>
+              <div class="detail-item-points sub">-200</div>
+              <div class="detail-status approved">已使用</div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-item">
+            <div class="detail-item-left">
+              <div class="detail-item-type">自媒体 - 小红书发布</div>
+              <div class="detail-item-date">2024-01-18</div>
+            </div>
+            <div>
+              <div class="detail-item-points add">+20</div>
+              <div class="detail-status approved">已通过</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
 </div>
 
 <script>
-  // 简单的交互演示
-  document.querySelectorAll('.group-option:not(.disabled)').forEach(option => {
-    option.addEventListener('click', function() {
-      document.querySelectorAll('.group-option').forEach(o => o.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
+  // 群组多选（互斥逻辑）
+  const groupSelect = document.getElementById('group-select');
+  if (groupSelect) {
+    groupSelect.addEventListener('click', function(e) {
+      const option = e.target.closest('.group-option');
+      if (!option || option.classList.contains('disabled')) return;
 
+      const isNone = option.dataset.group === 'none';
+
+      if (isNone) {
+        // 点击"未加入"：清除其他选中，只保留自己
+        document.querySelectorAll('.group-option').forEach(o => {
+          o.classList.remove('active', 'exclusive');
+        });
+        option.classList.add('active', 'exclusive');
+      } else {
+        // 点击普通群组：先清除"未加入"的选中和exclusive状态
+        const noneOption = document.querySelector('.group-option[data-group="none"]');
+        noneOption.classList.remove('active', 'exclusive');
+
+        // 切换当前项的选中状态
+        if (option.classList.contains('active')) {
+          option.classList.remove('active');
+        } else {
+          option.classList.add('active');
+        }
+
+        // 检查是否没有任何群组选中，如果是则选中"未加入"
+        const anyActive = document.querySelector('.group-option[data-group!="none"]:not(.disabled).active');
+        if (!anyActive) {
+          noneOption.classList.add('active', 'exclusive');
+        }
+      }
+    });
+  }
+
+  // 城市二级级联选择
+  const cityData = {
+    'bj': [{value: 'cy', label: '朝阳区'}, {value: 'hd', label: '海淀区'}, {value: 'fx', label: '丰台区'}, {value: 'dc', label: '东城区'}],
+    'sh': [{value: 'pd', label: '浦东新区'}, {value: 'hp', label: '黄浦区'}, {value: 'xuhui', label: '徐汇区'}],
+    'gd': [{value: 'sz', label: '深圳市'}, {value: 'gz', label: '广州市'}, {value: 'zh', label: '珠海市'}],
+    'zj': [{value: 'hz', label: '杭州市'}, {value: 'nb', label: '宁波市'}, {value: 'wz', label: '温州市'}],
+    'sc': [{value: 'cd', label: '成都市'}, {value: 'my', label: '绵阳市'}, {value: 'dy', label: '德阳市'}]
+  };
+
+  const provinceSelect = document.getElementById('province-select');
+  const citySelect = document.getElementById('city-select');
+
+  if (provinceSelect && citySelect) {
+    provinceSelect.addEventListener('change', function() {
+      const province = this.value;
+      citySelect.innerHTML = '<option value="">选择城市</option>';
+
+      if (province && cityData[province]) {
+        cityData[province].forEach(city => {
+          const option = document.createElement('option');
+          option.value = city.value;
+          option.textContent = city.label;
+          citySelect.appendChild(option);
+        });
+      }
+    });
+  }
+
+  // 开关切换
   document.querySelectorAll('.toggle-switch').forEach(toggle => {
     toggle.addEventListener('click', function() {
       this.classList.toggle('active');
     });
   });
 
+  // 管理员管理页Tab切换
   document.querySelectorAll('.admin-tab').forEach(tab => {
     tab.addEventListener('click', function() {
       document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      const tabs = ['admin-list', 'group-settings', 'category-settings'];
+      const index = Array.from(document.querySelectorAll('.admin-tab')).indexOf(this);
+
+      document.getElementById('admin-list').style.display = index === 0 ? 'block' : 'none';
+      document.getElementById('group-settings').style.display = index === 1 ? 'block' : 'none';
+      document.getElementById('category-settings').style.display = index === 2 ? 'block' : 'none';
+    });
+  });
+
+  // 积分类型选择
+  document.querySelectorAll('.category-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // 积分审批Tab切换
+  document.querySelectorAll('.approve-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.approve-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // 积分排行Tab切换
+  document.querySelectorAll('.points-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.points-tab').forEach(t => t.classList.remove('active'));
       this.classList.add('active');
     });
   });

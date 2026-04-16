@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
     }
   }
 
-  const { nickname, avatar, phone, name, wechatId, groupId } = event
+  const { nickname, avatar, phone, name, wechatId, groupIds, province, city } = event
 
   // 参数校验
   if (!phone) {
@@ -32,7 +32,7 @@ exports.main = async (event, context) => {
       error: '姓名不能为空'
     }
   }
-  if (!groupId) {
+  if (!groupIds || groupIds.length === 0) {
     return {
       success: false,
       error: '请选择所属群组'
@@ -55,7 +55,9 @@ exports.main = async (event, context) => {
           nickname: nickname || name,
           avatar: avatar || '',
           wechatId: wechatId || '',
-          groupId: groupId,
+          groupIds: groupIds,
+          province: province || '',
+          city: city || '',
           updateTime: db.serverDate()
         }
       })
@@ -69,7 +71,9 @@ exports.main = async (event, context) => {
           phone: phone,
           name: name,
           wechatId: wechatId || '',
-          groupId: groupId,
+          groupIds: groupIds,
+          province: province || '',
+          city: city || '',
           role: existing.role || 'member'
         }
       }
@@ -91,7 +95,9 @@ exports.main = async (event, context) => {
       phone: phone,
       name: name,
       wechatId: wechatId || '',
-      groupId: groupId,
+      groupIds: groupIds,
+      province: province || '',
+      city: city || '',
       role: initialRole,
       status: 'active',
       createTime: db.serverDate(),
@@ -111,7 +117,9 @@ exports.main = async (event, context) => {
         phone: newUser.phone,
         name: newUser.name,
         wechatId: newUser.wechatId,
-        groupId: newUser.groupId,
+        groupIds: newUser.groupIds,
+        province: newUser.province,
+        city: newUser.city,
         role: newUser.role
       }
     }

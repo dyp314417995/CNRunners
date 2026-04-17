@@ -1,0 +1,9 @@
+{
+  "name": "race-follow",
+  "version": "1.0.0",
+  "description": "关注/取消关注赛事",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

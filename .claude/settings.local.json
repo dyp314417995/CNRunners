@@ -4,7 +4,10 @@
       "Bash(powershell:*)",
       "Bash(git:*)",
       "Bash(where git:*)",
-      "Bash(cmd.exe:*)"
+      "Bash(cmd.exe:*)",
+      "Read(//c/Users/董亚鹏/.claude/**)",
+      "Bash(cmd:*)",
+      "WebSearch"
     ]
   }
 }

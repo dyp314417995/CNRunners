@@ -333,3 +333,81 @@ export async function updateAdmin(userId, action) {
 export async function updateGroup(groupId, data) {
   return callFunction(CLOUD_FUNCTIONS.ADMIN_UPDATE_GROUP, { groupId, ...data })
 }
+
+// ========== 赛事日历相关 ==========
+
+/**
+ * 获取赛事列表
+ * @param {object} params - 查询参数
+ * @param {string} params.yearMonth - 年月 (YYYY-MM)
+ * @param {string} params.type - 赛事类型
+ * @param {string} params.province - 省份
+ * @returns {Promise<array>}
+ */
+export async function getRaceList(params = {}) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_GET_LIST, params)
+}
+
+/**
+ * 获取赛事详情
+ * @param {string} raceId - 赛事ID
+ * @returns {Promise<object>}
+ */
+export async function getRaceDetail(raceId) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_GET_DETAIL, { raceId })
+}
+
+/**
+ * 报名赛事
+ * @param {object} params - 报名参数
+ * @returns {Promise<object>}
+ */
+export async function registerRace(params) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_REGISTER, params)
+}
+
+/**
+ * 获取我的报名
+ * @returns {Promise<array>}
+ */
+export async function getMyRaceRegistrations() {
+  return callFunction(CLOUD_FUNCTIONS.RACE_GET_MY_REGISTRATIONS)
+}
+
+/**
+ * 发布赛事（管理员）
+ * @param {object} race - 赛事数据
+ * @returns {Promise<object>}
+ */
+export async function publishRace(race) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_PUBLISH, race)
+}
+
+/**
+ * 取消赛事（管理员）
+ * @param {string} raceId - 赛事ID
+ * @param {string} reason - 取消原因
+ * @returns {Promise<object>}
+ */
+export async function cancelRace(raceId, reason) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_CANCEL, { raceId, reason })
+}
+
+/**
+ * 关注/取消关注赛事
+ * @param {string} raceId - 赛事ID
+ * @param {string} action - 操作: follow/unfollow/setReminder
+ * @param {number} reminder - 提醒时间(毫秒)
+ * @returns {Promise<object>}
+ */
+export async function followRace(raceId, action, reminder) {
+  return callFunction(CLOUD_FUNCTIONS.RACE_FOLLOW, { raceId, action, reminder })
+}
+
+/**
+ * 获取我关注的赛事
+ * @returns {Promise<array>}
+ */
+export async function getMyFollowedRaces() {
+  return callFunction(CLOUD_FUNCTIONS.RACE_GET_MY_FOLLOWED)
+}

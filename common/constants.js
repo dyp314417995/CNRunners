@@ -115,7 +115,16 @@ export const CLOUD_FUNCTIONS = {
   ADMIN_GET_ANNOUNCEMENTS: 'admin-getAnnouncements',
   ADMIN_PUBLISH_ANNOUNCEMENT: 'admin-publishAnnouncement',
   ADMIN_GET_CATEGORIES: 'admin-getCategories',
-  ADMIN_SAVE_CATEGORY: 'admin-saveCategory'
+  ADMIN_SAVE_CATEGORY: 'admin-saveCategory',
+  // 赛事相关
+  RACE_GET_LIST: 'race-getList',
+  RACE_GET_DETAIL: 'race-getDetail',
+  RACE_REGISTER: 'race-register',
+  RACE_GET_MY_REGISTRATIONS: 'race-getMyRegistrations',
+  RACE_PUBLISH: 'race-publish',
+  RACE_CANCEL: 'race-cancel',
+  RACE_FOLLOW: 'race-follow',
+  RACE_GET_MY_FOLLOWED: 'race-getMyFollowed'
 }
 
 // 集合名称
@@ -127,8 +136,47 @@ export const COLLECTIONS = {
   POINT_CATEGORIES: 'pointCategories',
   RUNNING_RECORDS: 'runningRecords',
   DEVICE_BINDINGS: 'deviceBindings',
-  ANNOUNCEMENTS: 'announcements'
+  ANNOUNCEMENTS: 'announcements',
+  RACES: 'races',
+  RACE_REGISTRATIONS: 'raceRegistrations',
+  RACE_FOLLOWS: 'raceFollows'
 }
+
+// 赛事类型
+export const RACE_TYPE = {
+  MARATHON: 'marathon',
+  HALF_MARATHON: 'half_marathon',
+  '10K': '10k',
+  '5K': '5k',
+  TRAIL: 'trail',
+  ULTRA: 'ultra',
+  FUN_RUN: 'fun_run'
+}
+
+// 赛事状态
+export const RACE_STATUS = {
+  REGISTRATION_NOT_OPEN: 'registration_not_open',
+  REGISTRATION_OPEN: 'registration_open',
+  REGISTRATION_CLOSED: 'registration_closed',
+  RACE_IN_PROGRESS: 'race_in_progress',
+  ENDED: 'ended'
+}
+
+// 报名状态
+export const REGISTRATION_STATUS = {
+  PENDING: 'pending',
+  CONFIRMED: 'confirmed',
+  CANCELLED: 'cancelled',
+  REFUNDED: 'refunded'
+}
+
+// 提醒选项（毫秒）
+export const REMINDER_OPTIONS = [
+  { value: 0, label: '比赛当天' },
+  { value: 86400000, label: '前一天' },
+  { value: 259200000, label: '前三天' },
+  { value: 604800000, label: '前一周' }
+]
 
 // 时间格式化模板
 export const DATE_FORMAT = {

@@ -93,6 +93,37 @@
       "style": {
         "navigationBarTitleText": "管理员管理"
       }
+    },
+    {
+      "path": "pages/race/calendar",
+      "style": {
+        "navigationBarTitleText": "赛事日历",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/race/detail",
+      "style": {
+        "navigationBarTitleText": "赛事详情"
+      }
+    },
+    {
+      "path": "pages/race/register",
+      "style": {
+        "navigationBarTitleText": "报名参赛"
+      }
+    },
+    {
+      "path": "pages/race/my",
+      "style": {
+        "navigationBarTitleText": "我的赛事"
+      }
+    },
+    {
+      "path": "pages/race/publish",
+      "style": {
+        "navigationBarTitleText": "发布赛事"
+      }
     }
   ],
   "globalStyle": {
@@ -124,6 +155,12 @@
         "iconPath": "static/tabbar/running.png",
         "selectedIconPath": "static/tabbar/running-active.png",
         "text": "跑步"
+      },
+      {
+        "pagePath": "pages/race/calendar",
+        "iconPath": "static/tabbar/race.png",
+        "selectedIconPath": "static/tabbar/race-active.png",
+        "text": "赛事"
       },
       {
         "pagePath": "pages/profile/index",

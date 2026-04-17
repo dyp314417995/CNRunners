@@ -74,6 +74,12 @@
     <view class="section">
       <view class="section-title">其他</view>
       <view class="menu-list">
+        <view class="menu-item" @click="goToMyRaces">
+          <text class="menu-icon">🏆</text>
+          <text class="menu-name">我的赛事</text>
+          <text class="arrow">›</text>
+        </view>
+
         <view class="menu-item" @click="goToBind('garmin')">
           <text class="menu-icon">⌚</text>
           <text class="menu-name">佳明 Connect</text>
@@ -193,6 +199,10 @@ export default {
 
     goToBind(platform) {
       uni.navigateTo({ url: `/pages/profile/bind?platform=${platform}` })
+    },
+
+    goToMyRaces() {
+      uni.navigateTo({ url: '/pages/race/my' })
     },
 
     logout() {

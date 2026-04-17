@@ -79,6 +79,15 @@ export async function updateUserInfo(userInfo) {
 }
 
 /**
+ * 更新我的群组
+ * @param {array} groupIds - 群组ID列表
+ * @returns {Promise<object>}
+ */
+export async function updateMyGroup(groupIds) {
+  return callFunction(CLOUD_FUNCTIONS.USER_UPDATE_GROUP, { groupIds })
+}
+
+/**
  * 获取积分排行
  * @param {string} groupId - 跑团ID
  * @param {string} period - 周期：week/month/all

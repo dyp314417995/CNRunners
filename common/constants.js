@@ -93,6 +93,7 @@ export const CLOUD_FUNCTIONS = {
   USER_REGISTER: 'user-register',
   USER_GET_INFO: 'user-getInfo',
   USER_UPDATE: 'user-update',
+  USER_UPDATE_GROUP: 'user-updateGroup',
   GROUP_GET_LIST: 'group-getList',
   POINTS_GET_LIST: 'points-getList',
   POINTS_GET_CATEGORIES: 'points-getCategories',

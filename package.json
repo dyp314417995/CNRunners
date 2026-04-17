@@ -1,7 +1,7 @@
 {
   "name": "cnrunners",
   "version": "1.0.0",
-  "description": "九州战马联盟 CNRunners 跑团管理小程序",
+  "description": "跑遍九州 CNRunners 跑团管理小程序",
   "main": "main.js",
   "scripts": {
     "dev": "uni -p wx",

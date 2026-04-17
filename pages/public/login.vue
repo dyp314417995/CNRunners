@@ -13,7 +13,7 @@
         <image v-if="avatarUrl" :src="avatarUrl" class="logo-img" mode="aspectFill"></image>
         <text v-else class="logo-icon">🏃</text>
       </view>
-      <view class="app-name">九州战马联盟</view>
+      <view class="app-name">跑遍九州</view>
       <view class="app-slogan">和志同道合的人一起奔跑</view>
     </view>
 
@@ -115,7 +115,7 @@
       <view v-if="step === 3" class="step-content success-content">
         <view class="success-icon">✓</view>
         <view class="success-text">注册成功</view>
-        <view class="success-sub">欢迎加入九州战马联盟</view>
+        <view class="success-sub">欢迎加入跑遍九州</view>
         <button class="btn-primary" @click="goHome">进入首页</button>
       </view>
     </view>
